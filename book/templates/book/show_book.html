@@ -1,0 +1,18 @@
+{% extends 'book/base.html' %}
+{% block body_block %}
+<h3 style="text-align:center">Due Summary</h3>
+<hr>
+<div class="container-lg">
+  <div class="card" style="width: 40rem;">
+    <div class="card-body ">
+    	<img class="card-img-top row-image2" src="{{info.image.url}}" width="200" height="200">
+    	<div ><pre>Book Name  : 	{{info.name}}</pre></div>
+    	<div ><pre>Author     : 	{{info.author}}</pre></div>
+    	<div ><pre>Discription: 	{{info.discription}}</pre></div>
+    	<div ><pre>Language   : 	{{info.language}}</pre></div>
+      <a href="{% url 'book_list' %}" class="btn btn-primary">Back To List</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

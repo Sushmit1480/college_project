@@ -1,0 +1,17 @@
+{% extends 'book/base.html' %}
+{% block body_block %}
+<h3 style="text-align:center">Due Summary</h3>
+<hr>
+<div class="container">
+  <div class="card" style="width: 25rem;">
+    <div class="card-body ">
+      <div ><pre>Student  : {{fine.student_name}}</pre></div>
+      <div ><pre>Reg. No. : {{fine.reg_no}}</pre></div>
+      <div ><pre>Branch	  : {{fine.branch}}</pre></div>
+      <div ><pre>Fine     : {{fine.total_fine|floatformat:2}}</pre></div>
+      <a href="{% url 'about' %}" class="btn btn-primary">Home</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

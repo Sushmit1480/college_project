@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>MyLibrary</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+
+   <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+  </head>
+  <body>
+
+   <!--navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Books World</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'about' %}">About <span class="sr-only">(current)</span></a>
+      </li>
+
+      {% if user.is_authenticated %}
+		  <li class="nav-item active">
+            <a class="nav-link" href="#">Welcome {{request.user.first_name}}<span class="sr-only">(current)</span></a>
+          </li>
+
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'book_list' %}">Books List<span class="sr-only">(current)</span></a>
+          </li>
+
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'Create-Book' %}">Upload Book<span class="sr-only">(current)</span></a>
+          </li>
+		  
+		  <li class="nav-item active">
+            <a class="nav-link" href="{% url 'student_list' %}">Students List<span class="sr-only">(current)</span></a>
+          </li>
+
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'Create-Student' %}">Upload Student<span class="sr-only">(current)</span></a>
+          </li>
+
+          <li class="nav-item active" style="float: right;">
+            <a class="nav-link" href="{% url 'logout' %}">Logout <span class="sr-only">(current)</span></a>
+          </li>
+
+      {% else %}
+      <li class="nav-item active" style="float: right">
+        <a class="nav-link" href="{% url 'login' %}">Login <span class="sr-only">(current)</span></a>
+      </li>
+
+      <li class="nav-item active" style="float: right">
+        <a class="nav-link" href="{% url 'signup' %}">Sign up <span class="sr-only">(current)</span></a>
+      </li>
+      {% endif %}
+    </ul>
+
+
+
+  </div>
+</nav>
+
+
+<!--end navbar-->
+
+
+  <div class="container">
+     {% block body_block %}
+     {% endblock %}
+  </div>
+
+ {% block js %}
+ {% endblock js %}
+
+  </body>
+</html>
